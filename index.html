@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press this button</title>
+    <style>
+        body {
+            font-family: 'Arial', Sans-Serif;
+            background: linear-gradient(135deg, #ED1A, #fecfef, #ffecd2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: auto;
+        }
+        .container {
+            text-align: center;
+            justify-content: center;
+            display: grid;
+            background: transparent;
+            width: calc(100% - 140px);
+            padding: 70px;
+            border-radius: 70px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        
+        
+        }
+        .button {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        
+        }
+        button:hover {
+        transform: scale(1.1);
+        
+        }
+        button { 
+            width: calc(100% - 20px);
+            padding: 10px 10px;
+            font-size: 1.2em;
+            border: double 5px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        
+          }
+          #tekennn {
+            border-radius: 20px;
+            background: linear-gradient(
+            180deg,
+            #F26,
+            #F28291,
+            #F225);
+            transition: 0.3s;
+          
+        
+          }
+          #kepooo {
+            border-radius: 20px;
+            background: linear-gradient(
+            180deg,
+            #F26,
+            #F28291,
+            #F225);
+            transition: 0.3s;
+            
+        }
+        #message1 { 
+            display: none;
+            font-size: 2em;
+            color: #e91e63;
+            margin-top: 20px;
+            animation: fadeInUp 1s infinite;
+        
+        }
+        #back {
+          display: none;
+          margin-top: 20px;
+          background: #ff4081;
+        
+          
+        }
+        #message2 {
+            display: none;
+            font-size: 2em;
+            color: #e91e63;
+            margin-top: 20px;
+            animation: fadeInUp 1s infinite;
+          
+        }
+        @keyframes fadeInUp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 2em;
+            animation: float 3s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <h1>Pencet deh 💖</h1>
+      
+        <div class="buttons">
+           <button id="tekennn">tekennn</button>
+           <button id="kepooo">kepooo</button>
+        </div>
+        
+        <div class="messages">
+            <div id="message1">
+             I LOVEEEE UUU SOO MUUCCHH 💕
+            </div>
+
+            <div id="message2">
+             KAMUU TUUU CANTIIKK BGTT TWWW
+            </div>
+        </div>
+        
+        <button id="back" style="display:none;">Balik</button>
+
+    <script>
+        const tekennnBtn = document.getElementById('tekennn');
+        const kepoooBtn = document.getElementById('kepooo');
+        const backBtn = document.getElementById('back');
+        const message1 = document.getElementById('message1');
+        const message2 = document.getElementById('message2');
+        const buttons = document.querySelector('.buttons');
+        const heartsContainer = document.getElementById('hearts');
+
+
+        // Function to create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        // Create hearts every 1000ms
+        setInterval(createHeart, 500);
+        
+        
+     // tombol tekennn
+     tekennnBtn.addEventListener("click", () => {
+      
+          message1.style.display = "block";
+          message2.style.display = "none";
+          buttons.style.display = "none";
+          backBtn.style.display = "inline-block";
+     });
+     
+    
+     // tombol kepooo    
+     kepoooBtn.addEventListener("click", ()=> {
+          
+            message2.style.display = "block";
+            message1.style.display = "none";
+            buttons.style.display = "none";
+            backBtn.style.display = "inline-block";
+      });
+      
+     // tombol Balik
+     backBtn.addEventListener("click", ()=> {
+            message1.style.display = "none";
+            message2.style.display = "none";
+            buttons.style.display = "block";
+            backBtn.style.display = "none";
+     });
+     
+     
+        
+ </script>
+</body>
+</html>
